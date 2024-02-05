@@ -1,0 +1,16 @@
+img {
+  height: 500px;
+  width: auto;
+}
+
+button {
+  cursor: pointer;
+}
+
+.show {
+  display: flex;
+}
+
+.hide {
+  display: none;
+}
