@@ -8,11 +8,11 @@
   prevBtn.addEventListener("click", previousImg);
 
   function nextImg() {
-    if (imgIndex < 5) {
+    if (imgIndex < imgList.length - 1) {
       imgList[imgIndex].classList.add("hide");
       imgList[imgIndex + 1].classList.remove("hide");
       imgIndex++;
-    } else if (imgIndex >= 5) {
+    } else if (imgIndex >= imgList.length - 1) {
       imgList[imgIndex].classList.add("hide");
       imgIndex = 0;
       imgList[imgIndex].classList.remove("hide");
