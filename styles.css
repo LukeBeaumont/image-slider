@@ -16,10 +16,6 @@ button:hover {
   opacity: 20%;
 }
 
-.show {
-  display: flex;
-}
-
 .hide {
   display: none;
 }
