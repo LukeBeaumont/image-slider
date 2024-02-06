@@ -29,13 +29,13 @@ button:hover {
   align-items: center;
 }
 
-.counter::after {
+.counter::before {
   content: " ";
   display: inline-block;
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
 
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(107, 104, 104);
   border-radius: 50%;
 }
 
@@ -44,4 +44,15 @@ button:hover {
 }
 .counter-container {
   display: flex;
+  margin-top: 10px;
+}
+
+.selected::after {
+  content: " ";
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+
+  background-color: rgb(224, 17, 17);
+  border-radius: 50%;
 }
