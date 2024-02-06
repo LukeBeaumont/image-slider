@@ -1,3 +1,7 @@
+:root {
+  --counter-size: 10px;
+}
+
 img {
   height: 500px;
   width: auto;
@@ -32,15 +36,20 @@ button:hover {
 .counter::before {
   content: " ";
   display: inline-block;
-  width: 15px;
-  height: 15px;
-
+  width: var(--counter-size);
+  height: var(--counter-size);
+  position: absolute;
   background-color: rgb(107, 104, 104);
   border-radius: 50%;
 }
 
 .counter {
+  display: flex;
+  height: var(--counter-size);
+  width: var(--counter-size);
   margin: 5px;
+  justify-content: center;
+  align-items: center;
 }
 .counter-container {
   display: flex;
@@ -50,9 +59,9 @@ button:hover {
 .selected::after {
   content: " ";
   display: inline-block;
-  width: 5px;
-  height: 5px;
-
-  background-color: rgb(224, 17, 17);
+  width: 6px;
+  height: 6px;
+  background-color: rgb(255, 255, 255);
   border-radius: 50%;
+  position: absolute;
 }
