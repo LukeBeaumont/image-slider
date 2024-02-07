@@ -6,10 +6,10 @@
   const counters = document.querySelectorAll(".counter");
 
   nextBtn.addEventListener("click", () => {
-    nextImg(), selectCounter();
+    nextImg();
   });
   prevBtn.addEventListener("click", () => {
-    previousImg(), selectCounter();
+    previousImg();
   });
 
   function nextImg() {
@@ -38,8 +38,29 @@
     console.log(imgIndex);
   }
 
-  function selectCounter() {
-    counters.forEach((counter) => counter.classList.remove("selected"));
-    counters[imgIndex].classList.add("selected");
+  function hideAllImg() {
+    imgList.forEach((img) => img.classList.add("hide"));
   }
+  function displayClickedImg(index) {
+    imgList[index].classList.remove("hide");
+  }
+
+  function selectCounter(index) {
+    counters[index].classList.add("selected");
+  }
+
+  function clearCounters() {
+    counters.forEach((counter) => {
+      counter.classList.remove("selected");
+    });
+  }
+
+  counters.forEach((counter) =>
+    counter.addEventListener("click", (e) => {
+      hideAllImg();
+      displayClickedImg(e.target.id);
+      clearCounters();
+      selectCounter(e.target.id);
+    })
+  );
 })();
