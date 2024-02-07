@@ -18,6 +18,17 @@
     selectCounter(imgIndex);
   });
 
+  counters.forEach((counter) =>
+    counter.addEventListener("click", (e) => {
+      hideAllImg();
+      displayClickedImg(e.target.id);
+      clearCounters();
+      imgIndex = Number(e.target.id);
+      selectCounter(e.target.id);
+      console.log(imgIndex);
+    })
+  );
+
   function nextImg() {
     if (imgIndex < imgList.length - 1) {
       imgList[imgIndex + 1].classList.remove("hide");
@@ -60,15 +71,12 @@
       counter.classList.remove("selected");
     });
   }
-
-  counters.forEach((counter) =>
-    counter.addEventListener("click", (e) => {
-      hideAllImg();
-      displayClickedImg(e.target.id);
-      clearCounters();
-      imgIndex = Number(e.target.id);
-      selectCounter(e.target.id);
-      console.log(imgIndex);
-    })
-  );
+  //timer functionality
+  function timer() {
+    hideAllImg();
+    nextImg();
+    clearCounters();
+    selectCounter(imgIndex);
+  }
+  document.addEventListener("DOMContentLoaded", setInterval(timer, 5000));
 })();
