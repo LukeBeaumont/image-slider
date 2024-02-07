@@ -12,7 +12,7 @@
       imgList[imgIndex].classList.add("hide");
       imgList[imgIndex + 1].classList.remove("hide");
       imgIndex++;
-    } else if (imgIndex >= imgList.length - 1) {
+    } else if (imgIndex === imgList.length - 1) {
       imgList[imgIndex].classList.add("hide");
       imgIndex = 0;
       imgList[imgIndex].classList.remove("hide");
@@ -21,6 +21,15 @@
   }
 
   function previousImg() {
-    console.log("Prev");
+    if (imgIndex === 0) {
+      imgList[imgIndex].classList.add("hide");
+      imgList[imgList.length - 1].classList.remove("hide");
+      imgIndex = imgList.length - 1;
+    } else if (imgIndex > 0) {
+      imgList[imgIndex].classList.add("hide");
+      imgList[imgIndex - 1].classList.remove("hide");
+      imgIndex--;
+    }
+    console.log(imgIndex);
   }
 })();
