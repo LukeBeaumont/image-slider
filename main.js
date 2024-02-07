@@ -6,19 +6,23 @@
   const counters = document.querySelectorAll(".counter");
 
   nextBtn.addEventListener("click", () => {
+    hideAllImg();
     nextImg();
+    clearCounters();
+    selectCounter(imgIndex);
   });
   prevBtn.addEventListener("click", () => {
+    hideAllImg();
     previousImg();
+    clearCounters();
+    selectCounter(imgIndex);
   });
 
   function nextImg() {
     if (imgIndex < imgList.length - 1) {
-      imgList[imgIndex].classList.add("hide");
       imgList[imgIndex + 1].classList.remove("hide");
       imgIndex++;
     } else if (imgIndex === imgList.length - 1) {
-      imgList[imgIndex].classList.add("hide");
       imgIndex = 0;
       imgList[imgIndex].classList.remove("hide");
     }
@@ -27,11 +31,9 @@
 
   function previousImg() {
     if (imgIndex === 0) {
-      imgList[imgIndex].classList.add("hide");
       imgList[imgList.length - 1].classList.remove("hide");
       imgIndex = imgList.length - 1;
     } else if (imgIndex > 0) {
-      imgList[imgIndex].classList.add("hide");
       imgList[imgIndex - 1].classList.remove("hide");
       imgIndex--;
     }
@@ -46,7 +48,11 @@
   }
 
   function selectCounter(index) {
-    counters[index].classList.add("selected");
+    if (imgIndex < imgList.length) {
+      counters[index].classList.add("selected");
+    } else if (imgIndex === imgList.length) {
+      counters[index].classList.add("selected");
+    }
   }
 
   function clearCounters() {
@@ -60,7 +66,9 @@
       hideAllImg();
       displayClickedImg(e.target.id);
       clearCounters();
+      imgIndex = Number(e.target.id);
       selectCounter(e.target.id);
+      console.log(imgIndex);
     })
   );
 })();
