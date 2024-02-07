@@ -3,9 +3,14 @@
   const prevBtn = document.querySelector(".previous-btn");
   let imgList = document.querySelectorAll("img");
   let imgIndex = 0;
+  const counters = document.querySelectorAll(".counter");
 
-  nextBtn.addEventListener("click", nextImg);
-  prevBtn.addEventListener("click", previousImg);
+  nextBtn.addEventListener("click", () => {
+    nextImg(), selectCounter();
+  });
+  prevBtn.addEventListener("click", () => {
+    previousImg(), selectCounter();
+  });
 
   function nextImg() {
     if (imgIndex < imgList.length - 1) {
@@ -31,5 +36,10 @@
       imgIndex--;
     }
     console.log(imgIndex);
+  }
+
+  function selectCounter() {
+    counters.forEach((counter) => counter.classList.remove("selected"));
+    counters[imgIndex].classList.add("selected");
   }
 })();
